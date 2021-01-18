@@ -1,6 +1,7 @@
 
 # vuex-pure-typing
 A simple, complete and noninvasive way to type your vuex store.  
+This tool is implemented with TypeScript template literal type, so TS 4.1+ is required.
 The library works in a template way. You need to add several rows of template code to your present vuex store module, without changing current code or coding style. Also the typing impacts nothing to the existing code behaviour. It's totally clean ^_^.
 
 ## 1. Your vuex module should look like
