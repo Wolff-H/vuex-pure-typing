@@ -1,8 +1,8 @@
 declare type GetVuexModuleType<
-    _PATH extends string,
-    _FULL_PATH extends string,
-    _Module extends VuexModuleInstanceType,
-    VuexModuleTypeUnion extends VuexModuleType|{} = {},
+_PATH extends string,
+_FULL_PATH extends string,
+_Module extends VuexModuleInstanceType,
+VuexModuleTypeUnion extends VuexModuleType|{} = {},
 > =
 {
     _State:
@@ -14,6 +14,7 @@ declare type GetVuexModuleType<
     _Mutations: GetIntersectedMutations<GetPrefixedMutations<_FULL_PATH, _Module["mutations"]>, VuexModuleTypeUnion & VuexModuleTypeBase>
     _Actions: GetIntersectedActions<GetPrefixedActions<_FULL_PATH, _Module["actions"]>, VuexModuleTypeUnion & VuexModuleTypeBase>
 }
+
 
 /**
  * Vuex Module Type
@@ -38,7 +39,7 @@ declare type _VMT<
 
 declare type ActionContext<_S, _G, _M> =
 {
-    dispatch: any // ActionContext是dispatch的成员，dispatch不能循环引用自身
+    dispatch: any
     commit: import("vuex").ContextCommit & import("./helpers").LocalCommitSignature<_M>
     state: _S
     getters: _G
