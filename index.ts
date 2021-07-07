@@ -16,8 +16,8 @@ declare type GetVuexModuleType<
 }
 
 /**
- * Vuex Module Type
- * (this one is for the minifying usage purpose)
+ * Alias of Vuex Module Type.
+ * (this one is for the minifying usage purpose).
  */
 declare type _VMT<
     _PATH extends string,
@@ -38,7 +38,7 @@ declare type _VMT<
 
 declare type ActionContext<_S, _G, _M> =
 {
-    dispatch: any // ActionContext是dispatch的成员，dispatch不能循环引用自身
+    dispatch: any // ActionContext is a member of dispatch, thus dispatch cannot circularly reference itself
     commit: import("vuex").ContextCommit & import("./helpers").LocalCommitSignature<_M>
     state: _S
     getters: _G
@@ -54,7 +54,7 @@ type VuexModuleInstanceType =
     actions: any
 }
 
-// 定义通用复用类型 -----------------------------------------------------------------------------------------------------
+// Define common used types --------------------------------------------------------------------------------------------
 type VuexModuleType =
 {
     _State: any
@@ -75,7 +75,7 @@ type GMAFuntionType = {   [key: string]: (...args: any) => any   }
 
 
 
-// 获取 _State ---------------------------------------------------------------------------------------------------------
+// Deduce _State -------------------------------------------------------------------------------------------------------
 type GetIntersectedState<_S, VuexModuleTypeUnion extends VuexModuleType> =
     _S & UnionToIntersectionState<VuexModuleTypeUnion>
 
@@ -84,7 +84,7 @@ type GetPrefixedState<_PATH extends string, IntersectedState> =
 
 
 
-// 获取 _Getters -------------------------------------------------------------------------------------------------------
+// Deduce _Getters -----------------------------------------------------------------------------------------------------
 type GetPrefixedGetters<
     _FULL_PATH extends string,
     GettersType extends GMAFuntionType,
@@ -98,7 +98,7 @@ type GetIntersectedGetters<PrefixedGetters, VuexModuleTypeUnion extends VuexModu
 
 
 
-// 获取 _Mutations -----------------------------------------------------------------------------------------------------
+// Deduce _Mutations ---------------------------------------------------------------------------------------------------
 type GetPrefixedMutations<
     _FULL_PATH extends string,
     MutationsType extends GMAFuntionType,
@@ -112,7 +112,7 @@ type GetIntersectedMutations<PrefixedMutations, VuexModuleTypeUnion extends Vuex
 
 
 
-// 获取 _Actions -------------------------------------------------------------------------------------------------------
+// Deduce _Actions -----------------------------------------------------------------------------------------------------
 type GetPrefixedActions<
     _FULL_PATH extends string,
     ActionsType extends GMAFuntionType,
@@ -126,8 +126,8 @@ type GetIntersectedActions<PrefixedActions, VuexModuleTypeUnion extends VuexModu
 
 
 
-// 帮助函数 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 从 VuexModuleType 联合中取出 _State、_Getters、_Mutations、_Actions 各自的并集 //
+// helpers /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Derive intersection of _State, _Getters, _Mutations, _Actions respectively from VuexModuleType //
 type UnionToIntersectionState<Union extends VuexModuleType> =
     (Union extends any ? ((k: Union["_State"]) => void) : never ) extends (k: infer I) => void ? I : never
 

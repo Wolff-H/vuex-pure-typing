@@ -156,6 +156,7 @@ declare module "vuex"
 - Breaking changes of template generic parameters - way simpler and cleaner.
 - `context` deduction for actions in store module is now available.
 - Signatures of each `commit`, `dispatch` are seperately defined in a more accurate form correspoding to its context, namely inside or outside a store module.
+- Optimized type reasoning.
 - More semantic naming.
 - Add comments.
 - Add demo.

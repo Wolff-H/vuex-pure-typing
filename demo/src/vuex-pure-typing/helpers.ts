@@ -16,7 +16,7 @@ type GetTypeOfKey<T, K> = {   [Key in keyof T]: K extends keyof T ? T[K] : never
 
 
 
-// 取得优化干净的mutation的参数列表 //
+// Derive optimized clean paramenter list //
 type GetNeatenedMutationOrActionParamList<PrefixedMutationsOrActionsCombination, K> =
     GetMutationOrActionPayLoad<PrefixedMutationsOrActionsCombination, K> extends never ?
         [type: K]
@@ -31,7 +31,7 @@ type GetContextNeatenedMutationOrActionParamList<PrefixedMutationsOrActionsCombi
         [type: K, options: CommitOptions]
         :
         undefined extends GetMutationOrActionPayLoad<PrefixedMutationsOrActionsCombination, K> ? 
-            [type: K, payload: GetMutationOrActionPayLoad<PrefixedMutationsOrActionsCombination, K>|null, options: CommitOptions]    // 我们约定如果该mutation没有payload入参，但需要传options，则payload传null
+            [type: K, payload: GetMutationOrActionPayLoad<PrefixedMutationsOrActionsCombination, K>|null, options: CommitOptions]    // We make agreement that if a mutation has no payload passed in (still the parameter list needs an option after payload), then save its place with null.
             :
             [type: K, payload: GetMutationOrActionPayLoad<PrefixedMutationsOrActionsCombination, K>, options: CommitOptions]
 
