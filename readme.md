@@ -4,6 +4,11 @@ A simple, complete and noninvasive way to type vuex store.
 This tool is implemented with TypeScript template literal type, with TS 4.1+ required.
 The library works in a template way. You need to add several rows of template code to your present vuex store module, without changing current code or coding style. Also the typing impacts nothing to the existing code behaviour. It's totally clean ^_^.
 
+Effects:
+![deducing state](./docs/deducing-state.gif)
+![deducing commit](./docs/deducing-commit.gif)
+![deducing getters](./docs/deducing-getters.gif)
+
 ## 1. Your Vuex module would look like
 #### header
 ```typescript
