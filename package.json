@@ -8,6 +8,7 @@
     "type": "git",
     "url": "https://github.com/Wolff-H/vuex-pure-typing.git"
   },
+  "types": "index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.1.0-beta"
